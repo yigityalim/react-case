@@ -48,7 +48,7 @@ export function List() {
                     ref={popupRef}
                     style={{ height: 400 }}
                     tabIndex={0}
-                    className='absolute z-10 mt-2 w-full overflow-y-auto rounded-md border border-gray-300 bg-white shadow-md focus:border focus:border-red-500'
+                    className='no-scrollbar absolute z-10 mt-2 w-full overflow-y-auto rounded-md border border-gray-300 bg-white shadow-md focus:border focus:border-red-500'
                     onKeyDown={(e) => {
                         e.stopPropagation()
                         switch (e.key) {
@@ -73,16 +73,19 @@ export function List() {
                         }
                     }}
                 >
-                    {res.map((character) => (
-                        <Option
-                            key={character.id}
-                            character={character}
-                            highlight={input}
-                            onSelectCharacter={onSelect}
-                            ref={(el) => el && optionRefs.current.push(el)}
-                            nextRef={optionRefs.current[selectedIndex + 1]}
-                        />
-                    ))}
+                    {res
+                        .sort((a, b) => b.episode.length - a.episode.length)
+                        //.filter((character) => character.name.toLowerCase().includes(input.toLowerCase()))
+                        .map((character) => (
+                            <Option
+                                key={character.id}
+                                character={character}
+                                highlight={input}
+                                onSelectCharacter={onSelect}
+                                ref={(el) => el && optionRefs.current.push(el)}
+                                nextRef={optionRefs.current[selectedIndex + 1]}
+                            />
+                        ))}
                     <div className='flex w-full items-center justify-between *:transition'>
                         {data.info.prev && (
                             <button

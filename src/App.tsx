@@ -18,8 +18,8 @@ export function App() {
             >
                 Select Case
             </a>
-            <div className='w-full max-w-2xl'>
-                <h1 className='text-center text-3xl font-bold'>Multi Select</h1>
+            <div className='hidden w-full max-w-2xl sm:block'>
+                <h1 className='mb-4 text-center text-3xl font-bold'>Multi Select</h1>
                 <p className='text-center text-gray-600'>
                     Use <span className='font-bold'>Tab</span> to navigate between options,{' '}
                     <span className='font-bold'>Enter</span> to select, <span className='font-bold'>Esc</span> to close
@@ -32,14 +32,14 @@ export function App() {
 
             <MultiSelect />
 
-            <footer className='text-center text-lg text-gray-600'>
+            <footer className='text-center text-lg text-gray-600 space-y-4'>
                 <p>
                     Made with ❤️ by{' '}
                     <a
                         href='https://mehmetyigityalim.com'
                         target='_blank'
                         rel='noopener noreferrer'
-                        className='inline-block bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 bg-clip-text text-transparent'
+                        className='inline-block bg-gradient-to-r from-gray-600 via-indigo-500 to-red-400 bg-clip-text text-transparent'
                     >
                         Mehmet Yiğit Yalım
                     </a>

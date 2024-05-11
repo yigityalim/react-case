@@ -33,7 +33,7 @@ export const Option = React.forwardRef<HTMLDivElement, OptionProps>(
         return (
             <div
                 {...props}
-                tabIndex={character.id}
+                tabIndex={0}
                 className={cn(
                     'option flex cursor-pointer items-center gap-4 border-b border-gray-200 p-2 hover:bg-gray-100 focus:bg-gray-100'
                 )}
@@ -44,7 +44,7 @@ export const Option = React.forwardRef<HTMLDivElement, OptionProps>(
                 <img src={character.image} alt={character.name} className='size-12 rounded-full' />
                 <div className='flex w-full flex-col items-start justify-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap'>
                     <div className='flex w-full flex-row items-center justify-start gap-x-2'>
-                        <p className='text-lg font-semibold'>
+                        <p className='truncate text-lg font-semibold'>
                             {nameParts.map((part) => (
                                 <span
                                     key={crypto.randomUUID()}

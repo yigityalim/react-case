@@ -1,6 +1,7 @@
 import { useMultiSelect } from '@/context/multi-select/useMultiSelect'
 import { cn } from '@/lib/utils'
 import React from 'react'
+import _ from 'lodash'
 
 export function Header() {
     const { buttonRef, selectedCharacters, input, setInput, isOpen, setIsOpen, onRemove } = useMultiSelect()
@@ -28,17 +29,14 @@ export function Header() {
                     style={{
                         height: calculateSelectedCharactersHeight,
                     }}
-                    className='relative no-scrollbar flex w-fit flex-col items-center justify-start gap-2 overflow-y-auto rounded-lg'
+                    className='no-scrollbar relative flex w-fit flex-col items-center justify-start gap-2 overflow-y-auto rounded-lg'
                 >
                     {selectedCharacters.map((character) => (
                         <button
                             key={character.name}
                             onClick={() => onRemove(character.id)}
                             tabIndex={0}
-                            className={cn(
-                                'flex w-[180px] shrink-0 cursor-pointer select-none items-center justify-between gap-2 rounded-lg bg-zinc-200 px-2 py-1',
-                                'focus:border focus:border-red-500'
-                            )}
+                            className='flex shrink-0 cursor-pointer select-none items-center justify-between gap-2 rounded-lg bg-zinc-200 px-2 py-1'
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === 'Backspace') {
                                     onRemove(character.id)
