@@ -1,6 +1,4 @@
 import { type ClassValue, clsx } from 'clsx'
-import _ from 'lodash'
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
