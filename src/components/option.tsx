@@ -44,12 +44,12 @@ export const Option = React.forwardRef<HTMLDivElement, OptionProps>(
                 <img src={character.image} alt={character.name} className='size-12 rounded-full' />
                 <div className='flex w-full flex-col items-start justify-center gap-1 overflow-hidden text-ellipsis whitespace-nowrap'>
                     <div className='flex w-full flex-row items-center justify-start gap-x-2'>
-                        <p className='truncate text-lg font-semibold'>
+                        <p className='truncate text-lg'>
                             {nameParts.map((part) => (
                                 <span
                                     key={crypto.randomUUID()}
                                     className={
-                                        part.toLowerCase() === highlight.toLowerCase() ? 'font-bold text-red-400' : ''
+                                        part.toLowerCase() === highlight.toLowerCase() ? 'font-bold text-black' : 'text-zinc-700 font-normal'
                                     }
                                 >
                                     {part}
@@ -57,7 +57,19 @@ export const Option = React.forwardRef<HTMLDivElement, OptionProps>(
                             ))}
                         </p>
                         <div className='ml-auto space-x-2'>
-                            <span className='rounded-md bg-gray-200 px-1.5 py-0.5 text-sm text-gray-500'>
+                            {character.gender !== 'unknown' && (
+                                <span
+                                    className={cn('px-1.5 py-0.5 rounded-md text-xs', {
+                                        'bg-blue-500 text-blue-100': character.gender === 'Male',
+                                        'bg-pink-500 text-pink-100': character.gender === 'Female',
+                                        'bg-gray-500 text-white': character.gender === 'Genderless',
+                                    })}
+
+                                >
+                                    {character.gender}
+                                </span>
+                            )}
+                            <span className="rounded-md bg-gray-200 px-1.5 py-0.5 text-sm text-gray-500">
                                 {character.species}
                             </span>
                             <span
@@ -71,7 +83,7 @@ export const Option = React.forwardRef<HTMLDivElement, OptionProps>(
                             </span>
                         </div>
                     </div>
-                    <p className='text-sm'>Episode: {character.episode.length}</p>
+                    <p className="text-sm">Episode: {character.episode.length}</p>
                 </div>
             </div>
         )

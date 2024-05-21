@@ -11,5 +11,5 @@ export async function fetcher<T>(...args: Parameters<typeof fetch>) {
     if (!response.ok) {
         return response.json().then((data) => Promise.reject(data))
     }
-    return response.json() as Promise<T>
+    return await response.json() as Promise<T>
 }

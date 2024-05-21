@@ -1,9 +1,8 @@
+import React from 'react'
 import { useMultiSelect } from '@/context/multi-select/useMultiSelect'
 import { cn } from '@/lib/utils'
-import React from 'react'
-import _ from 'lodash'
 
-export function Header() {
+export function Header(): React.ReactElement {
     const { buttonRef, selectedCharacters, input, setInput, isOpen, setIsOpen, onRemove } = useMultiSelect()
 
     const calculateSelectedCharactersHeight = React.useMemo<number>(() => {
@@ -29,14 +28,14 @@ export function Header() {
                     style={{
                         height: calculateSelectedCharactersHeight,
                     }}
-                    className='no-scrollbar relative flex w-fit flex-col items-center justify-start gap-2 overflow-y-auto rounded-lg'
+                    className='no-scrollbar relative flex w-fit flex-col items-start justify-start gap-2 overflow-y-auto rounded-lg'
                 >
                     {selectedCharacters.map((character) => (
                         <button
                             key={character.name}
                             onClick={() => onRemove(character.id)}
                             tabIndex={0}
-                            className='flex shrink-0 cursor-pointer select-none items-center justify-between gap-2 rounded-lg bg-zinc-200 px-2 py-1'
+                            className='flex shrink-0 w-full cursor-pointer select-none items-center justify-start gap-2 rounded-lg bg-zinc-200 px-2 py-1'
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === 'Backspace') {
                                     onRemove(character.id)
@@ -44,7 +43,7 @@ export function Header() {
                             }}
                         >
                             <img src={character.image} alt={character.name} className='size-8 rounded-full' />
-                            <p className={cn('hidden truncate text-sm font-semibold text-gray-800 sm:block')}>
+                            <p className={cn('hidden truncate text-sm font-semibold text-start text-gray-800 sm:block')}>
                                 {character.name}
                             </p>
                             <svg
@@ -57,7 +56,7 @@ export function Header() {
                                 strokeWidth='2'
                                 strokeLinecap='round'
                                 strokeLinejoin='round'
-                                className='hidden size-4 shrink-0 sm:block'
+                                className='hidden size-4 shrink-0 ml-auto sm:block'
                             >
                                 <circle cx='12' cy='12' r='10' />
                                 <path d='m15 9-6 6' />
@@ -72,13 +71,11 @@ export function Header() {
                 <input
                     tabIndex={0}
                     type='text'
-                    className={cn(
-                        'peer w-full rounded-lg border border-gray-300 bg-transparent p-2 focus:border focus:border-blue-500 focus:outline-none'
-                    )}
+                    className='peer w-full rounded-lg border border-gray-300 bg-transparent p-2 focus:border focus:border-blue-500 focus:outline-none'
                     placeholder='Search for a character...'
                     value={input}
                     onClick={() => setIsOpen(true)}
-                    onChange={(e) => {
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         onChange(e)
                         setIsOpen(true)
                     }}
@@ -97,7 +94,7 @@ export function Header() {
                         strokeLinecap='round'
                         strokeLinejoin='round'
                         onClick={() => setInput('')}
-                        onKeyDown={(e) => {
+                        onKeyDown={(e: React.KeyboardEvent<SVGSVGElement>) => {
                             if (e.key === 'Enter') {
                                 setInput('')
                             }
@@ -111,7 +108,7 @@ export function Header() {
             </div>
             <button
                 tabIndex={0}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.stopPropagation()
                     setIsOpen((prev) => !prev)
                 }}

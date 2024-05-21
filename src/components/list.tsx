@@ -34,8 +34,6 @@ export function List() {
 
     if (error) return <Error />
 
-    if (data?.results?.length === 0) return <NoData />
-
     if (selectedCharacters.length === data.results.length)
         return <AllSelected setSelectedCharacters={setSelectedCharacters} />
 
@@ -86,20 +84,14 @@ export function List() {
                                 nextRef={optionRefs.current[selectedIndex + 1]}
                             />
                         ))}
-                    <div className='flex w-full items-center justify-between *:transition'>
+                    <div className='flex w-full items-center justify-between gap-x-2 p-2 *:transition *:flex *:duration-300 *:ease-in-out *:w-full *:items-center *:justify-center *:rounded-md *:bg-gray-100 *:py-2 *:text-sm *:font-semibold *:text-gray-800 *:hover:bg-gray-200'>
                         {data.info.prev && (
-                            <button
-                                className='flex w-full items-center justify-center border-t border-gray-300 bg-gray-100 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-200'
-                                onClick={() => setPage((prev) => prev - 1)}
-                            >
+                            <button onClick={() => setPage((prev) => prev - 1)}>
                                 Previous
                             </button>
                         )}
                         {data.info.next && (
-                            <button
-                                className='flex w-full items-center justify-center border-t border-gray-300 bg-gray-100 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-200'
-                                onClick={() => setPage((prev) => prev + 1)}
-                            >
+                            <button onClick={() => setPage((prev) => prev + 1)}>
                                 Next
                             </button>
                         )}

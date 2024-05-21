@@ -1,4 +1,4 @@
-import { OptionComponent } from '@/components/option'
+import type { OptionComponent } from '@/components/option'
 
 export type Data = {
     info: Info
@@ -15,10 +15,10 @@ type Info = {
 export interface Character {
     id: number
     name: string
-    status: string
+    status: 'Dead' | 'Alive' | 'unknown'
     species: string
     type: string
-    gender: string
+    gender: 'Male' | 'Female' | 'Genderless' | 'unknown'
     origin: Origin
     location: Location
     image: string

@@ -36,7 +36,7 @@ export function MultiSelectProvider({ children }: React.PropsWithChildren): Reac
     }, [])
 
     /**
-     * Handle the click outside of the popup
+     * Handle the click outside the popup
      * @param event - The MouseEvent
      */
     const handleClickOutside = React.useCallback((event: MouseEvent) => {
@@ -49,7 +49,7 @@ export function MultiSelectProvider({ children }: React.PropsWithChildren): Reac
     const isEndRef = React.useRef<HTMLDivElement>(null)
 
     /**
-     * Add the event listener to handle the click outside of the popup
+     * Add the event listener to handle the click outside the popup
      * @see {@link https://usehooks-ts.com/react-hook/use-event-listener}
      * @example
      */
